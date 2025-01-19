@@ -1,0 +1,18 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+RUN apk add --no-cache ffmpeg
+
+RUN cp /usr/bin/ffmpeg ./
+
+COPY index2.js .
+
+EXPOSE 8001
+EXPOSE 1936
+
+CMD ["node", "index2.js"]

@@ -1,0 +1,10 @@
+FROM haproxy:alpine
+
+# HAProxy 설정 파일 복사
+COPY tcp.cfg /usr/local/etc/haproxy/haproxy.cfg
+
+# 필요한 포트 노출
+EXPOSE 4321
+
+# HAProxy 실행
+CMD ["haproxy", "-f", "/usr/local/etc/haproxy/haproxy.cfg"]
